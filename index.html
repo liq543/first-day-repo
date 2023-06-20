@@ -1,43 +1,106 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Student Bio</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Student Bio</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* CSS Animation */
+    img:hover {
+      animation: spin 2s linear infinite;
+    }
 
-  <body>
-    <header>
-      <!-- Headers -->
-      <h1>Student Bio</h1>
-      <h2>Griffin Gore</h2>
-    </header>
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
 
-    <section>
-      <!-- Image -->
-      <img src="assets/good.png" alt="Picture of Griffin Gore" width="300" height="400">
+    /* Sparkle styles */
+    .sparkle {
+      position: fixed;
+      top: -10px;
+      left: -10px;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkle 3s linear infinite;
+      z-index: 9999;
+    }
 
-      <!-- Paragraph -->
-      <p>Hi my name is Griffin I made this website to learn more about HTML! Above is a picture of me and below you can find some things I am interested in.</p>
-    
-       <!-- Unordered list -->
-       <h1>Interests</h1>
-       <ul>
-        <li>I like to play guitar</li>
-        <li>I like to play video games</li>
-        <li>I like to code</li>
-      </ul>
+    @keyframes sparkle {
+      0% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+  </style>
+  <script>
+    // JavaScript code for sparkle effect
+    document.addEventListener("DOMContentLoaded", function () {
+      var container = document.querySelector("body");
+      var colors = ["#ffcc00", "#ff6699", "#cc99ff", "#00ccff", "#99cc00"];
+      container.addEventListener("mousemove", createSparkle);
 
-      <h1>Contact Info</h1>
-      <ul>
-       <li><b>Email:</b> <a href = "mailto:liq543@gmail.com?subject = Feedback&body = Message">liq543@gmail.com</a></li>
-       <li><b>Github:</b><a href="https://github.com/liq543">liq543</a></li>
-       <li><b>Portfolio:</b> Coming Soon</li>
-     </ul>
+      function createSparkle(event) {
+        var sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        sparkle.style.top = event.pageY + "px";
+        sparkle.style.left = event.pageX + "px";
+        sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        container.appendChild(sparkle);
+        setTimeout(function () {
+          sparkle.remove();
+        }, 2000);
+      }
+    });
+  </script>
+</head>
 
-      <!-- Link -->
-      <a href="https://www.google.com">This is a link to Google.com</a>
-    </section>
-  </body>
+<body>
+  <header>
+    <!-- Headers -->
+    <h1>Student Bio</h1>
+    <h2>Griffin Gore</h2>
+  </header>
+
+  <section>
+    <!-- Image -->
+    <img src="assets/good.png" alt="Picture of Griffin Gore" width="300" height="400">
+
+    <!-- Paragraph -->
+    <p>Hi, my name is Griffin. I made this website to learn more about HTML! Above is a picture of me, and below you can find some things I am interested in.</p>
+
+    <!-- Unordered list -->
+    <h1>Interests</h1>
+    <ul>
+      <li>I like to play guitar</li>
+      <li>I like to play video games</li>
+      <li>I like to code</li>
+    </ul>
+
+    <h1>Contact Info</h1>
+    <ul>
+      <li><b>Email:</b> <a href="mailto:liq543@gmail.com?subject=Feedback&body=Message">liq543@gmail.com</a></li>
+      <li><b>Github:</b><a href="https://github.com/liq543">liq543</a></li>
+      <li><b>Portfolio:</b> Coming Soon</li>
+    </ul>
+
+    <!-- Link -->
+    <a href="https://www.google.com">This is a link to Google.com</a>
+  </section>
+</body>
 
 </html>
