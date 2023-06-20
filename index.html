@@ -19,7 +19,54 @@
         transform: rotate(360deg);
       }
     }
+
+    /* Sparkle styles */
+    .sparkle {
+      position: fixed;
+      top: -10px;
+      left: -10px;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkle 3s linear infinite;
+      z-index: 9999;
+    }
+
+    @keyframes sparkle {
+      0% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
   </style>
+  <script>
+    // JavaScript code for sparkle effect
+    document.addEventListener("DOMContentLoaded", function () {
+      var container = document.querySelector("body");
+      var colors = ["#ffcc00", "#ff6699", "#cc99ff", "#00ccff", "#99cc00"];
+      container.addEventListener("mousemove", createSparkle);
+
+      function createSparkle(event) {
+        var sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        sparkle.style.top = event.pageY + "px";
+        sparkle.style.left = event.pageX + "px";
+        sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        container.appendChild(sparkle);
+        setTimeout(function () {
+          sparkle.remove();
+        }, 2000);
+      }
+    });
+  </script>
 </head>
 
 <body>
